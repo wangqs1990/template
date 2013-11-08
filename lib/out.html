@@ -1,0 +1,39 @@
+var $_out_="";$_out_+="<!DOCTYPE HTML>\n<html lang=\"en-US\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title></title>\n</head>\n<body>\n    ";
+context._iter_=true;context._seq_=[1,2,3,4,5];
+var loop=context.loop={"index":0};
+for(context._iter_key_=0,loop.length=context._seq_.length;context._iter_key_<loop.length;context._iter_key_++){
+  context._scope_.a=context._seq_[context._iter_key_];
+  $_out_+=context.get("a")
+  $_out_+="\n    ";
+}
+context._scope_={};context._iter_=false;delete context._seq;delete context._iter_key_;
+$_out_+="    My name is \"";
+$_out_+=context.get("name")
+$_out_+="\"\n    ";
+$_out_+=["aaaaaaaa","bbb"]
+$_out_+="\n    123\n    ";
+$_out_+=context.get("name")[0]
+$_out_+="\n    ";
+$_out_+=context.get("name")["name"]
+$_out_+="\n    ";
+if(context.get("test1")){
+  $_out_+="        ";
+  $_out_+=context.get("title")
+  $_out_+="\n    ";
+}else if(context.get("test2")){
+  $_out_+="        \"bbb\"\n    ";
+}else{
+  $_out_+="        \"ccc\"\n    ";
+}
+$_out_+="    ";
+context._iter_=true;context._seq_={"a":1,"b":2};
+var loop=context.loop={"index":0};for(context._iter_key_ in context._seq_){
+  loop.index++;context._scope_.key=context._iter_key_;
+  context._scope_.value=context._seq_[context._iter_key_];  $_out_+="    ";
+  $_out_+=context.get("key")
+  $_out_+=context.get("value")
+  $_out_+="\n    ";
+}
+context._scope_={};context._iter_=false;delete context._seq;delete context._iter_key_;
+$_out_+="</body>\n</html>";
+return $_out_;

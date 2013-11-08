@@ -2,11 +2,26 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>{{title}}</title>
+    <title></title>
 </head>
 <body>
-    My name is {{name}}
-    {{'aaaaaaaa'}}
+    {% for a in [1,2,3,4,5] -%}
+        {{a}}
+    {% endfor %}
+    My name is "{{name}}"
+    {{['aaaaaaaa','bbb']}}
     123
+    {{name[0]}}
+    {{name.name}}
+    {% if test1 %}
+        {{title}}
+    {% elif test2 %}
+        "bbb"
+    {% else %}
+        "ccc"
+    {% endif %}
+    {% for key,value in  {"a":1, "b": 2} %}
+    {{key}}{{value}}
+    {% endfor %}
 </body>
 </html>
