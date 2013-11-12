@@ -7,7 +7,7 @@
 <body>
     {% for a in [1,2,3,4,5] -%}
         {{a}}
-    {% endfor %}
+    {%- endfor %}
     My name is "{{name}}"
     {{['aaaaaaaa','bbb']}}
     123
@@ -20,8 +20,11 @@
     {% else %}
         "ccc"
     {% endif %}
-    {% for key,value in  {"a":1, "b": 2} %}
+    {% for key,value in  {"a":[1,2,3,4,5], "b": [2,3,4,5,6]} %}
     {{key}}{{value}}
+        {% for inner in value -%}
+            {{inner}}
+        {%- endfor %}
     {% endfor %}
 </body>
 </html>
