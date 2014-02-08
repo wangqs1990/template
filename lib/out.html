@@ -1,51 +1,35 @@
 var $_out_="";$_out_+="<!DOCTYPE HTML>\n<html lang=\"en-US\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title></title>\n</head>\n<body>\n    ";
+$_out_+=1+1&&3;$_out_+="\n";
 
-var scope=context._pushScope({loop:{index:0},_iter_:true,_seq_:[1,2,3,4,5]});
-for(scope._iter_key_=0,scope.loop.length=scope._seq_.length;scope._iter_key_<scope.loop.length;scope._iter_key_++){
-  scope.a=scope._seq_[scope._iter_key_];
-  $_out_+=context.get("a");
+var _socpe_=context._pushScope({loop:{index:0},_iter_:true,_seq_:[1,2,3,4,5]});
+for(_socpe_._iter_key_=0,_socpe_.loop.length=_socpe_._seq_.length;_socpe_._iter_key_<_socpe_.loop.length;_socpe_._iter_key_++){
+  _socpe_.a=_socpe_._seq_[_socpe_._iter_key_];
+  $_out_+="        ";
+  $_out_+=context.get("a");  $_out_+="\n";
 
 }
-scope=context._popScope();
+_socpe_=context._popScope();
 $_out_+="    My name is \"";
-$_out_+=context.get("name");
-$_out_+="\"\n    ";
-$_out_+=["aaaaaaaa","bbb"];
-$_out_+="\n    123\n    ";
-$_out_+=context.get("name")[0];
-$_out_+="\n    ";
-$_out_+=context.get("name")["name"];
-$_out_+="\n    ";
+$_out_+=context.get("name");$_out_+="\"\n    ";
+$_out_+=["aaaaaaaa","bbb"];$_out_+="\n        123\n    ";
+$_out_+=context.get("name")[0];$_out_+="\n";
 if(context.get("test1")){
   $_out_+="        ";
-  $_out_+=context.get("title");
-  $_out_+="\n    ";
+  $_out_+=context.get("title");  $_out_+="\n";
 }else if(context.get("test2")){
-  $_out_+="        \"bbb\"\n    ";
+  $_out_+="        \"bbb\"\n";
 }else{
-  $_out_+="        \"ccc\"\n    ";
+  $_out_+="    \"ccc\"\n";
 }
-$_out_+="    ";
 
-var scope=context._pushScope({loop:{index:0},_iter_:true,_seq_:{"a":[1,2,3,4,5],"b":[2,3,4,5,6]}});
-for(scope._iter_key_ in scope._seq_){
-  scope.loop.index++;context.set("key",scope._iter_key_);
-  context.set("value",scope._seq_[scope._iter_key_]);
+var _socpe_=context._pushScope({loop:{index:0},_iter_:true,_seq_:{"a":[1,2,3,4,5],"b":[2,3,4,5,6]}});
+for(_socpe_._iter_key_ in _socpe_._seq_){
+  _socpe_.loop.index++;context.set("key",_socpe_._iter_key_);
+  context.set("value",_socpe_._seq_[_socpe_._iter_key_]);
   $_out_+="    ";
-  $_out_+=context.get("key");
-  $_out_+=context.get("value");
-  $_out_+="\n        ";
-
-  var scope=context._pushScope({loop:{index:0},_iter_:true,_seq_:context.get("value")});
-  for(scope._iter_key_=0,scope.loop.length=scope._seq_.length;scope._iter_key_<scope.loop.length;scope._iter_key_++){
-    scope.inner=scope._seq_[scope._iter_key_];
-    $_out_+=context.get("inner");
-
-  }
-  scope=context._popScope();
-  $_out_+="    ";
+  $_out_+=context.get("key");  $_out_+=context.get("value");  $_out_+="\n";
 
 }
-scope=context._popScope();
+_socpe_=context._popScope();
 $_out_+="</body>\n</html>";
 return $_out_;
