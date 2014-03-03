@@ -1,42 +1,56 @@
-function anonymous(context) {
-var $_out_="",_scope=context.getScope();$_out_+="<!DOCTYPE HTML>\n<html lang=\"en-US\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title></title>\n</head>\n<body>\n    ";
-$_out_+=-1+1&&3;
-$_out_+="\n";
-
-_scope=context._pushScope(null,{_iter:true,_seq:[1,2,3,4,5]});
-for(_scope._iter_key=0,_scope._iter_len=_scope._seq.length;_scope._iter_key<_scope._iter_len;_scope._iter_key++){
-  context.set("a",_scope._seq[_scope._iter_key]);  $_out_+="        ";
-  $_out_+=context.get("a");
-  $_out_+="\n";
-
+function anonymous() {
+this.parent = this.env.getTemplate("base.html");
+this.root=function(context){
+var _out="",_scope=context.getScope();
+return this.parent.root.call(this,context);
+return _out;
 }
-_scope=context._popScope();
-$_out_+="    My name is \"";
-$_out_+=context.get("name");
-$_out_+="\"\n    ";
-$_out_+=["aaaaaaaa","bbb"];
-$_out_+="\n        123\n    ";
-$_out_+=context.get("name")[0];
-$_out_+="\n";
-if(context.get("test1")){
-  $_out_+="        ";
-  $_out_+=context.get("title");
-  $_out_+="\n";
-}else if(context.get("test2")){
-  $_out_+="        \"bbb\"\n";
-}else {
-  $_out_+="    \"ccc\"\n";
+this.block_body=function(context){
+var _out="",_scope=context.getScope();
+  _out+=-1+1&&3;
+  _out+="\n";
+  _out+=this.env.getFilter("default")(context.get("a"),"abc");
+  _out+="\n";
+(function(context){
+    context._pushScope();var iter=[1,2,3,4,5];
+    for(var i=0,len=iter.length;i<len;i++){
+      context.set("a",iter[i]);
+      _out+="    ";
+      _out+=context.get("a");
+      _out+="\n";
+    }
+    context._popScope();
+}).call(this, context);
+  _out+="My name is \"";
+  _out+=context.get("name");
+  _out+="\"\n";
+  _out+=["aaaaaaaa","bbb"];
+  _out+="\n    123\n";
+  _out+=context.get("name")[0];
+  _out+="\n";
+  if(context.get("test1")){
+    _out+="    ";
+    _out+=context.get("title");
+    _out+="\n";
+  }
+  else if(context.get("test2")){
+    _out+="    \"bbb\"\n";
+  }
+  else {
+    _out+="\"ccc\"\n";
+  }
+(function(context){
+    context._pushScope();var iter={"a":[1,2,3,4,5],"b":[2,3,4,5,6]};
+    for(var iter_key in iter){
+      context.set("key",iter_key);
+      context.set("value",iter[iter_key]);
+      _out+=context.get("key");
+      _out+=context.get("value");
+      _out+="\n";
+    }
+    context._popScope();
+}).call(this, context);
+return _out;
 }
-_scope=context._pushScope(null,{_iter:true,_seq:{"a":[1,2,3,4,5],"b":[2,3,4,5,6]}});
-for(_scope._iter_key in _scope._seq){
-  context.set("key",_scope._iter_key);
-  context.set("value",_scope._seq[_scope._iter_key]);  $_out_+="    ";
-  $_out_+=context.get("key");
-  $_out_+=context.get("value");
-  $_out_+="\n";
 
-}
-_scope=context._popScope();
-$_out_+="</body>\n</html>";
-return $_out_;
 }
