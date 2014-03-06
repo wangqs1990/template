@@ -11,5 +11,8 @@
   },
   "repository": "",
   "author": "wangqs",
-  "license": "BSD"
+  "license": "BSD",
+  "devDependencies": {
+    "jasmine-node": ""
+  }
 }
